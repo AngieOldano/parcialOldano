@@ -12,8 +12,8 @@ function App() {
     <Fragment> 
       <div>
         <Header/>
-            <ControlledCarousel/>
-          <h1>HOla</h1>
+          <ControlledCarousel/>
+         
           <Container>
             <Row>
               <Col xs={6} md={4}>
