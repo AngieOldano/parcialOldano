@@ -4,11 +4,11 @@ import { Container, Nav, Navbar, NavDropdown, Form, Button } from 'react-bootstr
 
 const Header = () => {
     return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" expand="lg" variant="dark">
       <Container fluid>
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav"> 
             <Nav>
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">Link</Nav.Link>
