@@ -31,7 +31,7 @@ function App() {
           <Container className='m-5'>
             <Row>
               <Col xs={9} md={6}>
-                <img width={500} height={300} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" alt="Imagen" />
+                <img className="img-fluid" width={500} height={300} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" alt="Imagen" />
               </Col>
               <Col xs={9} md={6} className="d-flex align-items-center">
                 <div>
