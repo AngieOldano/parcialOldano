@@ -85,21 +85,23 @@ function App() {
             </Row>
           </Container>
 
-          <Container>
-            <Row>
-              {
-                comics.map( comic =>
-                  <Col>
-                    <ComicCard
-                      name={comic.name}
-                      image={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                    />
-                  </Col>
-                )
-              }
 
-            </Row>
-          </Container>
+            <Container>
+              <Row>
+                {
+                  comics.map( comic =>
+                    <Col xs={12} sm={6} md={4} lg={3} className='m-2'>
+                      <ComicCard
+                        name = {comic.title}
+                        image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                      />
+                    </Col>
+                  )
+                }
+
+              </Row>
+            </Container>
+
           <Footer/>          
       </div>
     </Fragment>
