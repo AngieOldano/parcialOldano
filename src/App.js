@@ -39,9 +39,13 @@ function App() {
     readAPIMarvel()
   },[])
 
+
+ 
+
+
   const readAPIMarvel = async() => {
     try{
-      const api = await fetch("https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4");
+      const api = await fetch("https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4&title=Avengers&offset=400&limit=100");
       const data = await api.json();
       setComics(data.data.results);
     }catch(error){
@@ -53,59 +57,58 @@ function App() {
 
   return (
     <Fragment> 
-      <div>
+      <div className='background'>
         <Header/>
-          <ControlledCarousel/>
-         
-          <Container className='p-3'>
-            <Row>
-              <Col xs={6} md={4}>
-                <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" rounded />
-              </Col>
-              <Col xs={6} md={4}>
-                <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" roundedCircle />
-              </Col>
-              <Col xs={6} md={4}>
-                <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" thumbnail />
-              </Col>
-            </Row>
-          </Container>
+           <Container >
+             <Row>
+               {
+                 comics.map( comic =>
+                   <Col className='ml-2 mt-4 '>
+                     <ComicCard
+                       name = {comic.title}
+                       image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                     />
+                   </Col>
+                 )
+               }
 
-          <Container className='p-3'>
-            <Row>
-              <Col xs={6} md={6}>
-                <img className="img-fluid" width={500} height={300} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" alt="Imagen" />
-              </Col>
-              <Col xs={6} md={6} className="d-flex align-items-center">
-                <div>
-                  <h2>Título del texto</h2>
-                  <h3>Contenido del texto...</h3>
-                </div>
-              </Col>
-            </Row>
-          </Container>
+             </Row>
+           </Container>
 
-
-            <Container>
-              <Row>
-                {
-                  comics.map( comic =>
-                    <Col xs={12} sm={6} md={4} lg={3} className='m-2'>
-                      <ComicCard
-                        name = {comic.title}
-                        image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      />
-                    </Col>
-                  )
-                }
-
-              </Row>
-            </Container>
-
-          <Footer/>          
+         <Footer/>          
       </div>
     </Fragment>
   );
 }
 
 export default App;
+
+//<ControlledCarousel/>
+         
+//<Container className='p-3'>
+//  <Row>
+//    <Col xs={6} md={4}>
+//      <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" rounded />
+//    </Col>
+//    <Col xs={6} md={4}>
+//      <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" roundedCircle />
+//    </Col>
+//    <Col xs={6} md={4}>
+//      <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" thumbnail />
+//    </Col>
+//  </Row>
+//</Container>
+//
+//<Container className='p-3'>
+//  <Row>
+//    <Col xs={6} md={6}>
+//      <img className="img-fluid" width={500} height={300} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" alt="Imagen" />
+//    </Col>
+//    <Col xs={6} md={6} className="d-flex align-items-center">
+//      <div>
+//        <h2>Título del texto</h2>
+//        <h3>Contenido del texto...</h3>
+//      </div>
+//    </Col>
+//  </Row>
+//</Container>//

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import logo from '../assets/marvelLogo.png';
 
 
 
@@ -9,7 +10,7 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col md={3} className='p-3 text-center text-md-start'>
-            <img width={200} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" alt="Logo" />
+            <img width={200} height={100} src={logo} alt="Logo" />
           </Col>
           <Col md={4} className='d-flex align-items-end justify-content-end'>
             <p>Data provided by Marvel &copy; {new Date().getFullYear()} MARVEL</p>

@@ -5,3 +5,8 @@
 .custom-twitter{
   color:rgb(20, 204, 245);
 }
+
+.background{
+  background-image: url(assets/background.jpg);
+ 
+}
