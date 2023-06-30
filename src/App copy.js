@@ -35,47 +35,81 @@ function App() {
   
   const [comics, setComics] = useState([]);
 
-  useEffect(() => {
-    readAPIMarvel();
-  },[])
-  
-  
-  const readAPIMarvel = async() => {
-    //const variant = comics.filter(comic => comic.title.includes('Avenger'));
-    const variant = '&dateRange=2023-06-01,2023-06-29';
-    
-    try {
-      const api = await fetch(`https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4${variant}`);
-      const data = await api.json();
-      const result = data.data.results;
-      setComics(result);
-    } catch (error) {
-      console.log(error);
-    }
+  const [comicsSp, setComicsSp] = useState([]);
+  const [comicsT, setComicsT] = useState([]);
 
+
+  useEffect(() => {
+    readAPIMarvelT()
+    readAPIMarvelSp()
+    
+  },[])
+
+  const allComicsSp = [];
+  const allComicsT = [];
+  const f = () =>{
+    readAPIMarvelSp();
+    readAPIMarvelT()
+    console.log(comics);
+
+  }
+  const readAPIMarvelSp = async() => {
+
+    try{
+      const api = await fetch("https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4&title=Spider-Man&limit=10");
+      const data = await api.json();
+      const result = data.data.results; 
+
+      setComicsSp(result);
+    }catch(error){
+      console.log(error);
+    };
   };
 
-  const comicsThor = comics.filter(comic => comic.title.includes('Thor'));
+  const readAPIMarvelT = async() => {
 
+    try{
+      const api = await fetch("https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4&title=Thor&limit=2");
+      const data = await api.json();
+      const result = data.data.results; 
+
+      setComicsT(result);
+    }catch(error){
+      console.log(error);
+    };
+  };
+
+  const grootComics = comics.filter(comic => comic.title.includes('Thor'));
+  console.log(grootComics)
 
   return (
     <Fragment> 
       <div className='background'>
         <Header/>
-            <ControlledCarousel/>
-            <Container >
-              <Row>
-                {
-                  comics.map( comic =>
-                    <Col className='ml-2 mt-4 '>
-                      <ComicCard
-                        name = {comic.title}
-                        image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      />
-                    </Col>
-                  )
-                } 
-              </Row>
+           <Container >
+             <Row>
+               {
+                 comicsSp.map( comic =>
+                   <Col className='ml-2 mt-4 '>
+                     <ComicCard
+                       name = {comic.title}
+                       image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                     />
+                   </Col>
+                 )
+               }
+               {
+                 comicsT.map( comic =>
+                   <Col className='ml-2 mt-4 '>
+                     <ComicCard
+                       name = {comic.title}
+                       image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                     />
+                   </Col>
+                 )
+               }
+
+             </Row>
            </Container>
 
          <Footer/>          

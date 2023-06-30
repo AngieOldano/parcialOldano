@@ -6,7 +6,7 @@ import logo from '../assets/marvelLogo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light">
+    <footer className="bg-dark text-light mt-5">
       <Container fluid>
         <Row>
           <Col md={3} className='p-3 text-center text-md-start'>

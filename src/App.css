@@ -8,5 +8,8 @@
 
 .background{
   background-image: url(assets/background.jpg);
- 
+}
+
+.card-transparent {
+  background-color: transparent;
 }

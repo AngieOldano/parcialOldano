@@ -36,23 +36,20 @@ function App() {
   const [comics, setComics] = useState([]);
 
   useEffect(() => {
-    readAPIMarvel();
+    readAPIMarvel()
+    console.log(comics)
   },[])
-  
-  
+
+
   const readAPIMarvel = async() => {
-    //const variant = comics.filter(comic => comic.title.includes('Avenger'));
-    const variant = '&dateRange=2023-06-01,2023-06-29';
-    
-    try {
-      const api = await fetch(`https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4${variant}`);
+    try{
+      const api = await fetch("https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4&limit=5");
       const data = await api.json();
       const result = data.data.results;
       setComics(result);
-    } catch (error) {
+    }catch(error){
       console.log(error);
-    }
-
+    };
   };
 
   const comicsThor = comics.filter(comic => comic.title.includes('Thor'));
@@ -62,20 +59,20 @@ function App() {
     <Fragment> 
       <div className='background'>
         <Header/>
-            <ControlledCarousel/>
-            <Container >
-              <Row>
-                {
-                  comics.map( comic =>
-                    <Col className='ml-2 mt-4 '>
-                      <ComicCard
-                        name = {comic.title}
-                        image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      />
-                    </Col>
-                  )
-                } 
-              </Row>
+           <Container >
+             <Row>
+               {
+                 comics.map( comic =>
+                   <Col className='ml-2 mt-4 '>
+                     <ComicCard
+                       name = {comic.title}
+                       image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                     />
+                   </Col>
+                 )
+               }
+
+             </Row>
            </Container>
 
          <Footer/>          
