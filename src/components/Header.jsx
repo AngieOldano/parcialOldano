@@ -3,8 +3,15 @@ import { Container, Nav, Navbar, NavDropdown, Form, Button } from 'react-bootstr
 import logo from '../assets/marvelLogo.png';
 
 
+const Header = ({search, setSearch, setSelectedNavItem}) => {
 
-const Header = () => {
+
+  const changeUrl = (e) =>{
+    setSearch("&titleStartsWith="+e.target.value)
+    console.log(search)
+  }
+
+
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container fluid>
@@ -14,11 +21,11 @@ const Header = () => {
             <Nav>
                 <Nav.Link href="#home">Home</Nav.Link>              
                 <NavDropdown title="Comics" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Last Updates</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">DC</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#" onClick={() => setSelectedNavItem('&dateDescriptor=thisMonth')}>Last Updates</NavDropdown.Item>
+                  <NavDropdown.Item href="#">DC</NavDropdown.Item>
+                  <NavDropdown.Item href="#" onClick={() => setSelectedNavItem('&title=Spider-Man')}>Spider-Man</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav className='ms-auto'>
@@ -28,8 +35,10 @@ const Header = () => {
                       placeholder="Search"
                       className="me-2"
                       aria-label="Search"
+  
+                      onKeyUp={changeUrl}
                     />
-                    <Button variant="outline-secondary"><i class="bi bi-search"></i></Button>
+                    <Button variant="outline-secondary" type='submit'><i class="bi bi-search"></i></Button>
                 </Form>
           </Nav>
         </Navbar.Collapse>

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Container, Image, NavItem, Row } from 'react-bootstrap';
 import './App.css';
 import Header from './components/Header'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,37 +31,54 @@ import ComicCard from './components/ComicCard';
 
 // https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4
 
+
 function App() {
   
   const [comics, setComics] = useState([]);
+  const [selectedNavItem, setSelectedNavItem] = useState("");
+  const [url,setUrl]=useState('https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4')
+  const [search,setSearch] = useState("");
 
-  useEffect(() => {
+  useEffect(() => { 
     readAPIMarvel();
-  },[])
+  },[]);
   
-  
+
   const readAPIMarvel = async() => {
     //const variant = comics.filter(comic => comic.title.includes('Avenger'));
-    const variant = '&dateRange=2023-06-01,2023-06-29';
+    //const lastUpdates = '&dateDescriptor=thisMonth';
+    //const variant = '&formatType=collection';react-dom.development.js:86 
     
-    try {
-      const api = await fetch(`https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4${variant}`);
+    try { 
+
+      const api = await fetch(url + search);
       const data = await api.json();
       const result = data.data.results;
       setComics(result);
+
+      console.log("url app: " + url)
+
     } catch (error) {
       console.log(error);
     }
+
+
+
 
   };
 
   const comicsThor = comics.filter(comic => comic.title.includes('Thor'));
 
 
+
   return (
     <Fragment> 
       <div className='background'>
-        <Header/>
+        <Header
+          setSearch = {setSearch}
+          search = {search}
+          setSelectedNavItem = {setSelectedNavItem}
+        />
             <ControlledCarousel/>
             <Container >
               <Row>
