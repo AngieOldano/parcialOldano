@@ -35,22 +35,31 @@ import ComicCard from './components/ComicCard';
 function App() {
   
   const [comics, setComics] = useState([]);
-  const [url,setUrl]=useState('https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4')
+  const [url,setUrl] = useState('https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4')
   const [search,setSearch] = useState("");
 
   useEffect(() => { 
     readAPIMarvel();
   },[search]);
-  
+  //wolverine 1009718
+  //spiderman miles 1016181  peter 1009610
+  //deadpool 1009268  1017316 1017474
+
+  //daredevil 1009262
+  //echo 1010785
+  //shehulk 1017111 1011393 1009583
+
 
   const readAPIMarvel = async() => {    
     try {
-      const api = await fetch(url + search + "&limit=100");
+      const api = await fetch(url+ search + "&limit=100");
       const data = await api.json();
       const result = data.data.results;
       setComics(result);
+      console.log(comics)
     } catch (error) {
       console.log(error);
+
     }
   };
 
@@ -60,7 +69,9 @@ function App() {
         <Header
           setSearch = {setSearch}
         />
-            <ControlledCarousel/>
+            <ControlledCarousel
+              setSearch = {setSearch}
+            />
             <Container >
               <Row>
                 {

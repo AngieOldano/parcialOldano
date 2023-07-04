@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import sheHulkDaredevil from '../assets/shehulk-daredevil.jpg'
+import spiderverse from '../assets/spiderverse.png'
+import deadpoolWolverine from '../assets/WolverineDeadpool.png'
 
 
-
-const ControlledCarousel = () => {
+const ControlledCarousel = ({setSearch}) => {
   const [index, setIndex] = useState(0);
 
 
@@ -18,40 +20,39 @@ const ControlledCarousel = () => {
         <img
           className="d-block w-100"
           height={400}
-          src="https://images.comicbooktreasury.com/wp-content/uploads/2022/04/The-Avengers-100-Avengers-Reading-Order.jpg"
+          src={sheHulkDaredevil}
           alt="First slide"
+          onClick={() => setSearch("&sharedAppearances=1009262,1009583")}
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>She Hulk & Daredevil</h3>
+          <p>Shared appearances!</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
           height={400}
-          src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2019/09/hipertextual-disney-ofrecera-series-animadas-clasicas-spider-man-x-men-4-fantasticos-2019104760.jpg?fit=1790%2C950&quality=50&strip=all&ssl=1"
+          src={deadpoolWolverine}
           alt="Second slide"
+          onClick={() => setSearch("&sharedAppearances=1009718,1009268")}
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Deadpoll & Wolverine</h3>
+          <p>Shared appearances!</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
           height={400}
-          src="https://www.egames.news/__export/1683219613900/sites/debate/img/2023/05/04/marvel-spider-man-2-comic-gratis-free.jpg_242310155.jpg"
+          src={spiderverse}
           alt="Third slide"
+          onClick={()=>setSearch("&titleStartsWith=Spider-Verse")}
         />
-
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Spider Verse Comics!</h3>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

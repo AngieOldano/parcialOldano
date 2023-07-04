@@ -11,8 +11,6 @@ const Header = ({setSearch}) => {
       : setSearch("")
   }
 
-
-
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container fluid>
@@ -24,8 +22,7 @@ const Header = ({setSearch}) => {
                 <NavDropdown title="Comics" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#" onClick={() => setSearch("&dateDescriptor=thisMonth")}>Last Updates</NavDropdown.Item>
                   <NavDropdown.Item href="#" onClick={() => setSearch("&formatType=collection")}>Collections</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="#" onClick={() => setSearch("&dateDescriptor=nextWeek")}>Next sales</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav className='ms-auto'>
