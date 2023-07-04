@@ -8,7 +8,7 @@ const Header = ({setSearch}) => {
   const changeUrl = (e) =>{
     e.target.value!==""
       ? setSearch("&titleStartsWith="+e.target.value)
-      : setSearch("")
+      : setSearch("&offset=500")
   }
 
   return (

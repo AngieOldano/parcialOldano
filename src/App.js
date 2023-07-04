@@ -36,7 +36,7 @@ function App() {
   
   const [comics, setComics] = useState([]);
   const [url,setUrl] = useState('https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4')
-  const [search,setSearch] = useState("");
+  const [search,setSearch] = useState("&offset=500");
 
   useEffect(() => { 
     readAPIMarvel();
@@ -52,7 +52,7 @@ function App() {
 
   const readAPIMarvel = async() => {    
     try {
-      const api = await fetch(url+ search + "&limit=100");
+      const api = await fetch(url + search + "&limit=99");
       const data = await api.json();
       const result = data.data.results;
       setComics(result);
