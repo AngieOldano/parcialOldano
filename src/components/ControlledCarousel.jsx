@@ -8,8 +8,6 @@ import deadpoolWolverine from '../assets/WolverineDeadpool.png'
 const ControlledCarousel = ({setSearch}) => {
   const [index, setIndex] = useState(0);
 
-
-
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
@@ -29,6 +27,7 @@ const ControlledCarousel = ({setSearch}) => {
           <p>Shared appearances!</p>
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -37,12 +36,12 @@ const ControlledCarousel = ({setSearch}) => {
           alt="Second slide"
           onClick={() => setSearch("&sharedAppearances=1009718,1009268")}
         />
-
         <Carousel.Caption>
           <h3>Deadpoll & Wolverine</h3>
           <p>Shared appearances!</p>
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -55,6 +54,7 @@ const ControlledCarousel = ({setSearch}) => {
           <h3>Spider Verse Comics!</h3>
         </Carousel.Caption>
       </Carousel.Item>
+      
     </Carousel>
   );
 }

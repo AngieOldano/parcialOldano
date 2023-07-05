@@ -1,126 +1,65 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Col, Container, Image, NavItem, Row } from 'react-bootstrap';
-import './App.css';
-import Header from './components/Header'
+import React, { Fragment, useEffect, useState, useTransition } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, json } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Main from './components/Main';
+import Favs from './components/Favs';
+import Header from './components/Header';
 import Footer from './components/Footer';
-import ControlledCarousel  from './components/ControlledCarousel';
-import ComicCard from './components/ComicCard';
-
-//https://gateway.marvel.com:443/v1/public/comics?apikey=df79b836e83a37221efe4304eca4f9b0
-
-
-//Your public key / apikey
-//df79b836e83a37221efe4304eca4f9b0
-//Your private key
-//b6355a0e115ae40e6488b1d9775c4c198f6a3f2f
-
-//Server-side applications must pass two parameters in addition to the apikey parameter:
-//
-//ts - a timestamp (or other long string which can change on a request-by-request basis)
-//hash - a md5 digest of the ts parameter, your private key and your public key (e.g. md5(ts+privateKey+publicKey)
-//For example, a user with a public key of "1234" and a private key of "abcd" could construct a valid call 
-//as follows: http://gateway.marvel.com/v1/public/comics?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150 
-//(the hash value is the md5 digest of 1abcd1234)
-
-
-// 1b6355a0e115ae40e6488b1d9775c4c198f6a3f2fdf79b836e83a37221efe4304eca4f9b0
-// md5: 1df79b836e83a37221efe4304eca4f9b0b6355a0e115ae40e6488b1d9775c4c198f6a3f2f
-
-// hash: b8b320cc0d902f3d0b65122b58c3c0a4
-
-// https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4
-
 
 function App() {
+
+  let favsLC = JSON.parse(localStorage.getItem('favs'));
+  if(!favsLC){
+    favsLC = []
+  }
   
-  const [comics, setComics] = useState([]);
-  const [url,setUrl] = useState('https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=df79b836e83a37221efe4304eca4f9b0&hash=b8b320cc0d902f3d0b65122b58c3c0a4')
+  useEffect(() => {
+    favsLC
+    ? localStorage.setItem('favs', JSON.stringify(favs))
+    : localStorage.setItem('favs', JSON.stringify([]))
+  },[favsLC]);
+  
+  const [favs,setFavs] = useState(favsLC);
+  const [pending, changePage] = useTransition();
+  const [page,changePointer] = useState();
   const [search,setSearch] = useState("&offset=500");
 
-  useEffect(() => { 
-    readAPIMarvel();
-  },[search]);
-  //wolverine 1009718
-  //spiderman miles 1016181  peter 1009610
-  //deadpool 1009268  1017316 1017474
-
-  //daredevil 1009262
-  //echo 1010785
-  //shehulk 1017111 1011393 1009583
-
-
-  const readAPIMarvel = async() => {    
-    try {
-      const api = await fetch(url + search + "&limit=99");
-      const data = await api.json();
-      const result = data.data.results;
-      setComics(result);
-      console.log(comics)
-    } catch (error) {
-      console.log(error);
-
-    }
-  };
-
   return (
-    <Fragment> 
-      <div className='background'>
+
+    <Fragment>  
+      <Router>
         <Header
           setSearch = {setSearch}
         />
-            <ControlledCarousel
-              setSearch = {setSearch}
-            />
-            <Container >
-              <Row>
-                {
-                  comics.map( comic =>
-                    <Col className='ml-2 mt-4 '>
-                      <ComicCard
-                        name = {comic.title}
-                        image = {`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      />
-                    </Col>
-                  )
-                } 
-              </Row>
-           </Container>
 
-         <Footer/>          
-      </div>
+        <Routes>
+          <Route 
+            exact path="/" 
+            element={
+              <Main
+                search={search}
+                setSearch={setSearch}
+                setFavs={setFavs}
+                favs={favs}
+              />}
+          /> 
+
+          <Route 
+            path="/favs" 
+            element={
+              <Favs
+                favs={favs} 
+              />} 
+          />
+
+        </Routes>
+
+      </Router>
+
+    <Footer/>    
+
     </Fragment>
   );
 }
 
 export default App;
-
-//<ControlledCarousel/>
-         
-//<Container className='p-3'>
-//  <Row>
-//    <Col xs={6} md={4}>
-//      <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" rounded />
-//    </Col>
-//    <Col xs={6} md={4}>
-//      <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" roundedCircle />
-//    </Col>
-//    <Col xs={6} md={4}>
-//      <Image width={100} height={100} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" thumbnail />
-//    </Col>
-//  </Row>
-//</Container>
-//
-//<Container className='p-3'>
-//  <Row>
-//    <Col xs={6} md={6}>
-//      <img className="img-fluid" width={500} height={300} src="https://i.pinimg.com/originals/21/07/e2/2107e20536b74138c457f503a975162b.jpg" alt="Imagen" />
-//    </Col>
-//    <Col xs={6} md={6} className="d-flex align-items-center">
-//      <div>
-//        <h2>Título del texto</h2>
-//        <h3>Contenido del texto...</h3>
-//      </div>
-//    </Col>
-//  </Row>
-//</Container>//

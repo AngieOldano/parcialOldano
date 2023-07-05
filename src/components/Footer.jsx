@@ -1,12 +1,16 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 import logo from '../assets/marvelLogo.png';
 
 
 
 const Footer = () => {
+
+
   return (
-    <footer className="bg-dark text-light mt-5">
+    <footer className="bg-dark text-light ">
       <Container fluid>
         <Row>
           <Col md={3} className='p-3 text-center text-md-start'>
@@ -18,18 +22,18 @@ const Footer = () => {
           <Col md={5} className="d-flex mt-3 justify-content-end">
             <ul className="list-inline social-media">
               <li className="list-inline-item">
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                    <i class="bi bi-facebook fs-3"></i>
+                <a href="https://www.facebook.com/Marvel" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-facebook fs-3"></i>
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
-                    <i class="bi bi-twitter custom-twitter fs-3"></i>
+                <a href="https://www.twitter.com/MarvelStudios" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-twitter custom-twitter fs-3"></i>
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                    <i class="bi bi-instagram custom-instagram fs-3"></i>
+                <a href="https://www.instagram.com/marvel" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-instagram custom-instagram fs-3"></i>
                 </a>
               </li>
             </ul>
