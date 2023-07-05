@@ -48,7 +48,8 @@ function App() {
             path="/favs" 
             element={
               <Favs
-                favs={favs} 
+                favs={favs}
+                setFavs={setFavs} 
               />} 
           />
 
