@@ -19,7 +19,6 @@ const Main = ({search,setSearch,favs,setFavs}) => {
         const data = await api.json();
         const result = data.data.results;
         setComics(result);
-        console.log(comics)
       } catch (error) {
         console.log(error);
       }
@@ -38,7 +37,6 @@ const Main = ({search,setSearch,favs,setFavs}) => {
                 comics.map( comic =>
                   <Col className='ml-2 mt-4 mb-4 d-flex justify-content-center'>
                     <ComicCard
-                      //key = {comic.id} 
                       comic = {comic}
                       favs = {favs}
                       setFavs={setFavs}

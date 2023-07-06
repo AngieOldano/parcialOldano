@@ -13,7 +13,6 @@ const Favs = ({favs,setFavs}) => {
               favs.map( comic =>
                 <Col className='ml-2 mt-4 d-flex justify-content-center'>
                   <ComicCard
-                    //key = {comic.id} 
                     comic = {comic}
                     setFavs={setFavs}
                     favs = {favs}

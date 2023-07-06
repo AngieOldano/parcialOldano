@@ -6,19 +6,18 @@ const ComicCard = ({comic,favs,setFavs,comics}) => {
 
   const {id,title,thumbnail} = comic;
 
-  
-  const addFav = (e) => {
-    const newComic = comics.find(item => item.id === e)
-    setFavs([...favs, newComic])
-    console.log(favs)
-
+  const addFav = (id) => {
+    if (!favs.find(comic => comic.id === id)) {
+      const newComic = comics.find(item => item.id === id)
+      setFavs([...favs, newComic])
+    }
   }
 
-  const deleteFav = (e) => {
-    console.log("delete: " + favs)
-    const updatedFavs = favs.filter(item => item.id !== e);
+  const deleteFav = (id) => {
+    const updatedFavs = favs.filter(item => item.id !== id);
     setFavs(updatedFavs);
   }
+
 
   return ( 
     <Card  key= {comic.id}className="h-100 position-relative" style={{ width: '15rem' } }>
