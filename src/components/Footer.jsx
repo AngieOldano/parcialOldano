@@ -16,10 +16,10 @@ const Footer = () => {
           <Col md={3} className='p-3 text-center text-md-start'>
             <img width={200} height={100} src={logo} alt="Logo" />
           </Col>
-          <Col md={4} className='d-flex align-items-end justify-content-end'>
+          <Col md={4} className='d-flex align-items-end  justify-content-center'>
             <p>Data provided by Marvel &copy; {new Date().getFullYear()} MARVEL</p>
           </Col>
-          <Col md={5} className="d-flex mt-3 justify-content-end">
+          <Col md={5} className="d-flex align-items-center  justify-content-center">
             <ul className="list-inline social-media">
               <li className="list-inline-item">
                 <a href="https://www.facebook.com/Marvel" target="_blank" rel="noopener noreferrer">
