@@ -42,7 +42,7 @@ const Header = ({setSearch}) => {
                 <Form.Control
                   type="search"
                   placeholder="Search"
-                  className="me-2"
+                  className="me-2 custom-search-input"
                   aria-label="Search"
                   onKeyUp={changeUrl}
                 />

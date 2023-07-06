@@ -12,12 +12,12 @@ const Favs = ({favs,setFavs}) => {
   return ( 
     <Fragment>
       <div className='background p-4'>
-      <Button variant="danger" onClick={deleteAll}>Delete All</Button>
+      <Button variant="secondary" onClick={deleteAll}>Delete All</Button>
         <Container >
           <Row>
             {
               favs.map( comic =>
-                <Col className='ml-2 mt-4 d-flex justify-content-center'>
+                <Col key={comic.id} className='ml-2 mt-4 d-flex justify-content-center'>
                   <ComicCard
                     comic = {comic}
                     setFavs={setFavs}

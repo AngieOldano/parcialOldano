@@ -10,3 +10,7 @@
   background-image: url(assets/background2.jpg);
   min-height: 100vh
 }
+
+.custom-search-input::-webkit-search-cancel-button {
+  display: none;
+}
