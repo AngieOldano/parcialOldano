@@ -26,7 +26,6 @@ const ComicCard = ({comic,favs,setFavs,comics}) => {
     setFavs(updatedFavs);
   }
 
-
   return ( 
     <Card  key= {comic.id}className="h-100 position-relative m-1" style={{ width: '15rem' } }>
         {

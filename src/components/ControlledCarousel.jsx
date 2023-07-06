@@ -6,6 +6,7 @@ import deadpoolWolverine from '../assets/WolverineDeadpool.png'
 
 
 const ControlledCarousel = ({setSearch}) => {
+  
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {

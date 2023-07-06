@@ -13,6 +13,10 @@ const Header = ({setSearch}) => {
       : setSearch("&offset=500")
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   const openFavs = () => {
     navigate('/favs');
   }
@@ -39,7 +43,7 @@ const Header = ({setSearch}) => {
           <Nav className='ms-auto'>
             <Container className='d-flex flex-row-reverse'>
             <Button variant="danger" onClick={openFavs}><i className="bi bi-heart-fill"></i></Button>
-              <Form className='d-flex'>
+              <Form className='d-flex' onSubmit={handleSubmit}>
                 <Form.Control
                   type="search"
                   placeholder="Search"

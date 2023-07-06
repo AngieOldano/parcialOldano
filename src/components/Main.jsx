@@ -24,7 +24,6 @@ const Main = ({search,setSearch,favs,setFavs}) => {
       }
     };
   
-
     return (
       <Fragment> 
         <div className='background'>

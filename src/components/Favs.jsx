@@ -23,7 +23,8 @@ const Favs = ({favs,setFavs}) => {
                     setFavs={setFavs}
                     favs = {favs}
                   />
-                </Col>)
+                </Col>
+              )
             } 
           </Row>
         </Container>

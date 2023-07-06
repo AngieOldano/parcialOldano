@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState, useTransition } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, json } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from './components/Main';
 import Favs from './components/Favs';
@@ -20,8 +20,6 @@ function App() {
   },[favsLC]);
   
   const [favs,setFavs] = useState(favsLC);
-  const [pending, changePage] = useTransition();
-  const [page,changePointer] = useState();
   const [search,setSearch] = useState("&offset=500");
 
   return (
@@ -31,7 +29,6 @@ function App() {
         <Header
           setSearch = {setSearch}
         />
-
         <Routes>
           <Route 
             exact path="/" 
@@ -43,7 +40,6 @@ function App() {
                 favs={favs}
               />}
           /> 
-
           <Route 
             path="/favs" 
             element={
@@ -52,13 +48,9 @@ function App() {
                 setFavs={setFavs} 
               />} 
           />
-
         </Routes>
-
       </Router>
-
     <Footer/>    
-
     </Fragment>
   );
 }

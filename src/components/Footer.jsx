@@ -1,13 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-
 import logo from '../assets/marvelLogo.png';
 
 
 
 const Footer = () => {
-
 
   return (
     <footer className="bg-dark text-light ">
