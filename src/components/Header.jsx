@@ -37,7 +37,7 @@ const Header = ({setSearch}) => {
           </Nav>
           <Nav className='ms-auto'>
             <Container className='d-flex flex-row-reverse'>
-            <Button variant="danger" onClick={openFavs}><i class="bi bi-heart-fill"></i></Button>)
+            <Button variant="danger" onClick={openFavs}><i className="bi bi-heart-fill"></i></Button>)
               <Form className='d-flex'>
                 <Form.Control
                   type="search"

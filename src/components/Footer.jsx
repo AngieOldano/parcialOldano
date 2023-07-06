@@ -23,17 +23,17 @@ const Footer = () => {
             <ul className="list-inline social-media">
               <li className="list-inline-item">
                 <a href="https://www.facebook.com/Marvel" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-facebook fs-3"></i>
+                  <i className="bi bi-facebook fs-3"></i>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="https://www.twitter.com/MarvelStudios" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-twitter custom-twitter fs-3"></i>
+                  <i className="bi bi-twitter custom-twitter fs-3"></i>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="https://www.instagram.com/marvel" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-instagram custom-instagram fs-3"></i>
+                  <i className="bi bi-instagram custom-instagram fs-3"></i>
                 </a>
               </li>
             </ul>

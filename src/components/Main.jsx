@@ -35,7 +35,7 @@ const Main = ({search,setSearch,favs,setFavs}) => {
             <Row>
               {
                 comics.map( comic =>
-                  <Col className='ml-2 mt-4 mb-4 d-flex justify-content-center'>
+                  <Col key={comic.id} className='ml-2 mt-4 mb-4 d-flex justify-content-center'>
                     <ComicCard
                       comic = {comic}
                       favs = {favs}

@@ -18,13 +18,12 @@ const ComicCard = ({comic,favs,setFavs,comics}) => {
     setFavs(updatedFavs);
   }
 
-
   return ( 
     <Card  key= {comic.id}className="h-100 position-relative" style={{ width: '15rem' } }>
         {
           comics
-          ? (<Button variant="danger" onClick={() => addFav(id)}><i class="bi bi-heart-fill"></i></Button>)
-          : (<Button variant="danger" onClick={() => deleteFav(id)}><i class="bi bi-heartbreak-fill"></i></Button>)
+          ? (<Button variant="danger" onClick={() => addFav(id)}><i className="bi bi-heart-fill"></i></Button>)
+          : (<Button variant="danger" onClick={() => deleteFav(id)}><i className="bi bi-heartbreak-fill"></i></Button>)
         }
         <Card.Img variant="top" src={`${thumbnail.path}.${thumbnail.extension}`} width={300} height={380} />
         <Card.Body >
