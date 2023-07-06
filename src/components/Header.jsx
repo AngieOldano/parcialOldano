@@ -18,7 +18,8 @@ const Header = ({setSearch}) => {
   }
 
   const goToHome = () => {
-    navigate('/');
+    navigate('/')
+    setSearch('&offset=500')
   }
 
   return (
