@@ -28,7 +28,7 @@ const ComicCard = ({comic,favs,setFavs,comics}) => {
 
 
   return ( 
-    <Card  key= {comic.id}className="h-100 position-relative" style={{ width: '15rem' } }>
+    <Card  key= {comic.id}className="h-100 position-relative m-1" style={{ width: '15rem' } }>
         {
           comics
           ? (<Button variant='link' size='lg' className='position-absolute bottom-0 end-0' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => addFav(id)}>
