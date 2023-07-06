@@ -1,12 +1,18 @@
 import React, { Fragment } from 'react';
-import {Col, Container, Row} from 'react-bootstrap';
+import {Col, Container, Row, Button} from 'react-bootstrap';
 import ComicCard from "./ComicCard"
 
 const Favs = ({favs,setFavs}) => {
 
+  const deleteAll= () => {
+    const newFavs = []
+    setFavs(newFavs);
+  }
+
   return ( 
     <Fragment>
       <div className='background p-4'>
+      <Button variant="danger" onClick={deleteAll}>Delete All</Button>
         <Container >
           <Row>
             {
