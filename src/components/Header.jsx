@@ -31,14 +31,14 @@ const Header = ({setSearch}) => {
           <Nav>
               <Nav.Link href="#home" onClick={goToHome}>Home</Nav.Link>              
               <NavDropdown title="Comics" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#" onClick={() => setSearch("&dateDescriptor=thisMonth")}>Last Updates</NavDropdown.Item>
-                <NavDropdown.Item href="#" onClick={() => setSearch("&formatType=collection")}>Collections</NavDropdown.Item>
-                <NavDropdown.Item href="#" onClick={() => setSearch("&dateDescriptor=nextWeek")}>Next sales</NavDropdown.Item>
+                <NavDropdown.Item href="#" onClick={() => { goToHome(); setSearch("&dateDescriptor=thisMonth");}}>Last Updates</NavDropdown.Item>
+                <NavDropdown.Item href="#" onClick={() => { goToHome(); setSearch("&formatType=collection")}}>Collections</NavDropdown.Item>
+                <NavDropdown.Item href="#" onClick={() => { goToHome(); setSearch("&dateDescriptor=nextWeek")}}>Next sales</NavDropdown.Item>
               </NavDropdown>
           </Nav>
           <Nav className='ms-auto'>
             <Container className='d-flex flex-row-reverse'>
-            <Button variant="danger" onClick={openFavs}><i className="bi bi-heart-fill"></i></Button>)
+            <Button variant="danger" onClick={openFavs}><i className="bi bi-heart-fill"></i></Button>
               <Form className='d-flex'>
                 <Form.Control
                   type="search"
